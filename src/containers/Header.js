@@ -59,18 +59,6 @@ function Header(){
 
             <div className="flex-none ">
 
-                {/* Multiple theme selection, uncomment this if you want to enable multiple themes selection, 
-                also includes corporate and retro themes in tailwind.config file */}
-                
-                {/* <select className="select select-sm mr-4" data-choose-theme>
-                    <option disabled selected>Theme</option>
-                    <option value="light">Default</option>
-                    <option value="dark">Dark</option>
-                    <option value="corporate">Corporate</option>
-                    <option value="retro">Retro</option>
-                </select> */}
-
-
             {/* Light and dark theme selection toogle **/}
             <label className="swap ">
                 <input type="checkbox"/>
@@ -98,7 +86,7 @@ function Header(){
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li className="justify-between">
                         <Link to={'/app/settings-profile'}>
-                            Profile Settings
+                            Register
                             <span className="badge">New</span>
                             </Link>
                         </li>
