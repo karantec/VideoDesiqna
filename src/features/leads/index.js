@@ -1,5 +1,5 @@
 import moment from "moment";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TitleCard from "../../components/Cards/TitleCard";
 import { openModal } from "../common/modalSlice";
@@ -33,6 +33,15 @@ function Leads() {
     const { leads } = useSelector((state) => state.lead);
     const dispatch = useDispatch();
 
+    const [formData, setFormData] = useState({
+        campaignName: "",
+        campaignManager: "",
+        campaignDuration: "",
+        country: "",
+        state: "",
+        city: "",
+    });
+
     useEffect(() => {
         dispatch(getLeadsContent());
     }, []);
@@ -59,28 +68,51 @@ function Leads() {
         );
     };
 
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = () => {
+        // Here you can perform the submit action, like dispatching an action
+        console.log("Form Data Submitted:", formData);
+        // Dispatch form data if necessary:
+        // dispatch(addNewCampaign(formData));
+    };
+
     const CampaignForm = () => (
         <div className="space-y-4">
             <InputText
                 labelTitle="Campaign Name"
                 placeholder="Enter campaign name"
-                updateFormValue={(value) => console.log("Campaign Name:", value)}
+                name="campaignName"
+                value={formData.campaignName}
+                updateFormValue={handleInputChange}
             />
             <InputText
                 labelTitle="Campaign Manager"
                 placeholder="Enter campaign manager's name"
-                updateFormValue={(value) => console.log("Campaign Manager:", value)}
+                name="campaignManager"
+                value={formData.campaignManager}
+                updateFormValue={handleInputChange}
             />
             <DateRangePicker
                 labelTitle="Campaign Duration"
                 placeholder="Select date range"
-                updateFormValue={(value) => console.log("Campaign Duration:", value)}
+                name="campaignDuration"
+                value={formData.campaignDuration}
+                updateFormValue={handleInputChange}
             />
             <div>
                 <label className="block text-sm font-medium mb-1">Country</label>
                 <select
                     className="select select-bordered w-full"
-                    onChange={(e) => console.log("Country:", e.target.value)}
+                    name="country"
+                    value={formData.country}
+                    onChange={handleInputChange}
                 >
                     <option value="">Select Country</option>
                     <option value="India">India</option>
@@ -92,7 +124,9 @@ function Leads() {
                 <label className="block text-sm font-medium mb-1">State</label>
                 <select
                     className="select select-bordered w-full"
-                    onChange={(e) => console.log("State:", e.target.value)}
+                    name="state"
+                    value={formData.state}
+                    onChange={handleInputChange}
                 >
                     <option value="">Select State</option>
                     <option value="Maharashtra">Maharashtra</option>
@@ -103,14 +137,23 @@ function Leads() {
             <InputText
                 labelTitle="City"
                 placeholder="Enter city"
-                updateFormValue={(value) => console.log("City:", value)}
+                name="city"
+                value={formData.city}
+                updateFormValue={handleInputChange}
             />
+            <div className="flex justify-end">
+                <button
+                    className="btn btn-sm btn-primary mt-4"
+                    onClick={handleSubmit}
+                >
+                    Submit
+                </button>
+            </div>
         </div>
     );
 
     return (
         <>
-            
             {/* Render Campaign Form inside modal */}
             <TitleCard title="Campaign Form">
                 {CampaignForm()}

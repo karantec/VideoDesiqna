@@ -6,8 +6,8 @@ import InputText from '../../components/Input/InputText'
 
 function Login() {
     const INITIAL_LOGIN_OBJ = {
-        password: "",
-        emailId: ""
+        username: "",
+        password: ""
     }
 
     const [loading, setLoading] = useState(false)
@@ -18,25 +18,28 @@ function Login() {
         e.preventDefault()
         setErrorMessage("")
 
-        if (loginObj.emailId.trim() === "") return setErrorMessage("Email Id is required! (use any value)")
-        if (loginObj.password.trim() === "") return setErrorMessage("Password is required! (use any value)")
-        
+        const { username, password } = loginObj
+
+        if (username.trim() === "") return setErrorMessage("Username is required!")
+        if (password.trim() === "") return setErrorMessage("Password is required!")
+
+        // Custom login validation
+        if (username !== "renderverse" || password !== "renderverse@123") {
+            return setErrorMessage("Invalid username or password!")
+        }
+
         setLoading(true)
-        // Call API to check user credentials and save token in localStorage
-        localStorage.setItem("token", "DumyTokenHere")
-        setLoading(false)
-        window.location.href = '/app/welcome'
+        setTimeout(() => {
+            setLoading(false)
+            // Save token or any flag in localStorage (if needed)
+            localStorage.setItem("token", "RenderverseToken")
+            window.location.href = '/app/welcome'
+        }, 1000) // Simulate API call
     }
 
     const updateFormValue = ({ updateType, value }) => {
         setErrorMessage("")
         setLoginObj({ ...loginObj, [updateType]: value })
-    }
-
-    const handleSocialLogin = (provider) => {
-        // Placeholder for social login logic
-        console.log(`Logging in with ${provider}`);
-        // Implement actual social login logic here
     }
 
     return (
@@ -50,8 +53,22 @@ function Login() {
                         <h2 className='text-2xl font-semibold mb-2 text-center'>Login</h2>
                         <form onSubmit={submitForm}>
                             <div className="mb-4">
-                                <InputText type="emailId" defaultValue={loginObj.emailId} updateType="emailId" containerStyle="mt-4" labelTitle="Email Id" updateFormValue={updateFormValue} />
-                                <InputText defaultValue={loginObj.password} type="password" updateType="password" containerStyle="mt-4" labelTitle="Password" updateFormValue={updateFormValue} />
+                                <InputText
+                                    defaultValue={loginObj.username}
+                                    type="text"
+                                    updateType="username"
+                                    containerStyle="mt-4"
+                                    labelTitle="Username"
+                                    updateFormValue={updateFormValue}
+                                />
+                                <InputText
+                                    defaultValue={loginObj.password}
+                                    type="password"
+                                    updateType="password"
+                                    containerStyle="mt-4"
+                                    labelTitle="Password"
+                                    updateFormValue={updateFormValue}
+                                />
                             </div>
 
                             <div className='text-right text-primary'>
@@ -62,13 +79,6 @@ function Login() {
 
                             <ErrorText styleClass="mt-8">{errorMessage}</ErrorText>
                             <button type="submit" className={"btn mt-2 w-full btn-primary" + (loading ? " loading" : "")}>Login</button>
-
-                            {/* Social Login Buttons */}
-                            <div className='flex justify-center mt-4'>
-                                <button onClick={() => handleSocialLogin('Google')} className="btn btn-outline mr-2">Google Login</button>
-                                <button onClick={() => handleSocialLogin('Facebook')} className="btn btn-outline mr-2">Facebook Login</button>
-                                <button onClick={() => handleSocialLogin('Apple')} className="btn btn-outline">Apple Login</button>
-                            </div>
                         </form>
                     </div>
                 </div>
