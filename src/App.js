@@ -34,7 +34,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/Verify-otp" element={<ForgotPasswordOTP />} />
           <Route path="/reset-password" element={<ResetPassword/>}/>
