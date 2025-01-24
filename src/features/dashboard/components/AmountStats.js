@@ -1,5 +1,4 @@
 
-
 function AmountStats({}){
     return(
         <div className="stats bg-base-100 shadow">

@@ -9,14 +9,7 @@ import Datepicker from "react-tailwindcss-datepicker";
 
 
 
-const periodOptions = [
-    {name : "Today", value : "TODAY"},
-    {name : "Yesterday", value : "YESTERDAY"},
-    {name : "This Week", value : "THIS_WEEK"},
-    {name : "Last Week", value : "LAST_WEEK"},
-    {name : "This Month", value : "THIS_MONTH"},
-    {name : "Last Month", value : "LAST_MONTH"},
-]
+
 
 function DashboardTopBar({updateDashboardPeriod}){
 
@@ -46,15 +39,7 @@ function DashboardTopBar({updateDashboardPeriod}){
                 showShortcuts={true} 
                 primaryColor={"white"} 
             /> 
-            {/* <SelectBox 
-                options={periodOptions}
-                labelTitle="Period"
-                placeholder="Select date range"
-                containerStyle="w-72"
-                labelStyle="hidden"
-                defaultValue="TODAY"
-                updateFormValue={updateSelectBoxValue}
-            /> */}
+           
             </div>
             <div className="text-right ">
                 <button className="btn btn-ghost btn-sm normal-case"><ArrowPathIcon className="w-4 mr-2"/>Refresh Data</button>

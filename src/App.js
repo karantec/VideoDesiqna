@@ -2,7 +2,7 @@ import React, { lazy, useEffect } from 'react'
 import './App.css';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
 import { themeChange } from 'theme-change'
-import checkAuth from './app/auth';
+
 import initializeApp from './app/init';
 import ForgotPasswordOTP from './features/user/ForgotOtp';
 import ResetPassword from './features/user/ResetPassword';
