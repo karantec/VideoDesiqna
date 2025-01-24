@@ -6,6 +6,7 @@ import checkAuth from './app/auth';
 import initializeApp from './app/init';
 import ForgotPasswordOTP from './features/user/ForgotOtp';
 import ResetPassword from './features/user/ResetPassword';
+import Address from './features/user/Address';
 
 // Importing pages
 const Layout = lazy(() => import('./containers/Layout'))
@@ -39,7 +40,7 @@ function App() {
           <Route path="/Verify-otp" element={<ForgotPasswordOTP />} />
           <Route path="/reset-password" element={<ResetPassword/>}/>
           <Route path="/register" element={<Register />} />
-         
+          <Route path="/address" element={<Address/>}/>
           {/* Place new routes over this */}
           <Route path="/app/*" element={<Layout />} />
 

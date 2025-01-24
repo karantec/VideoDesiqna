@@ -29,11 +29,11 @@ const routes = [
     icon: <Squares2X2Icon className={iconClasses}/>, 
     name: 'Dashboard',
   },
-  // {
-  //   path: '/app/leads', // url
-  //   icon: <InboxArrowDownIcon className={iconClasses}/>, // icon component
-  //   name: 'Leads', // name that appear in Sidebar
-  // },
+  {
+    path: '/app/leads', // url
+    icon: <InboxArrowDownIcon className={iconClasses}/>, // icon component
+    name: 'Campaign', // name that appear in Sidebar
+  },
   // {
   //   path: '/app/transactions', // url
   //   icon: <CurrencyDollarIcon className={iconClasses}/>, // icon component
@@ -85,6 +85,12 @@ const routes = [
         icon: <DocumentIcon className={submenuIconClasses}/>,
         name: 'Reset Password',
       },
+      {
+        path: '/app/address',
+        icon: <DocumentIcon className={submenuIconClasses}/>,
+        name: 'Address',
+      },
+
      
     ]
   },

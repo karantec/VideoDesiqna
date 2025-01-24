@@ -14,6 +14,7 @@ const Team = lazy(() => import('../pages/protected/Team'))
 const Transactions = lazy(() => import('../pages/protected/Transactions'))
 const Bills = lazy(() => import('../pages/protected/Bills'))
 const Registration = lazy(() => import('../pages/protected/ProfileSettings'))
+const Address=lazy(()=>import ('../pages/Address'))
 const GettingStarted = lazy(() => import('../pages/GettingStarted'))
 const DocFeatures = lazy(() => import('../pages/DocFeatures'))
 const DocComponents = lazy(() => import('../pages/DocComponents'))
@@ -47,6 +48,10 @@ const routes = [
   {
     path: '/Register',
     component: Registration,
+  },
+  {
+    path: '/Address',
+    component: Address,
   },
   {
     path: '/settings-billing',
