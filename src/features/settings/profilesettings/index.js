@@ -13,7 +13,7 @@ function ProfileSettings() {
         personalInfo: {
             mobileNumber: '',
             firstName: '',
-            lastName: '',
+            lastName: '', 
             profession: '',
             emailId: '',
             password: '',

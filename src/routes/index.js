@@ -1,6 +1,7 @@
 // All components mapping with path for internal routes
 
 import { lazy } from 'react'
+import FeedbackForm from '../features/Feedback'
 
 const Dashboard = lazy(() => import('../pages/protected/Dashboard'))
 const Welcome = lazy(() => import('../pages/protected/Welcome'))
@@ -8,17 +9,20 @@ const Page404 = lazy(() => import('../pages/protected/404'))
 const Blank = lazy(() => import('../pages/protected/Blank'))
 const Charts = lazy(() => import('../pages/protected/Charts'))
 const Leads = lazy(() => import('../pages/protected/Leads'))
+const RequestDemo = lazy(() => import('../pages/protected/RequestDemo'))
+const BookDemo=lazy(()=>import('../pages/protected/BookDemo'))
 const Integration = lazy(() => import('../pages/protected/Integration'))
 const Calendar = lazy(() => import('../pages/protected/Calendar'))
 const Team = lazy(() => import('../pages/protected/Team'))
 const Transactions = lazy(() => import('../pages/protected/Transactions'))
 const Bills = lazy(() => import('../pages/protected/Bills'))
 const Registration = lazy(() => import('../pages/protected/ProfileSettings'))
+const Manual=lazy(()=>import('../pages/protected/ManuSetting'))
 const Address=lazy(()=>import ('../pages/Address'))
 const GettingStarted = lazy(() => import('../pages/GettingStarted'))
 const DocFeatures = lazy(() => import('../pages/DocFeatures'))
 const DocComponents = lazy(() => import('../pages/DocComponents'))
-
+const Feedback = lazy(() => import('../pages/protected/Feedback'))
 
 const routes = [
   {
@@ -32,6 +36,18 @@ const routes = [
   {
     path: '/leads',
     component: Leads,
+  },
+  {
+    path: '/RequestDemo',
+    component: RequestDemo,
+  },
+  {
+    path: '/BookDemo',
+    component: BookDemo,
+  },
+  {
+    path: '/Feedback',
+    component: Feedback,
   },
   {
     path: '/settings-team',
@@ -48,6 +64,10 @@ const routes = [
   {
     path: '/Register',
     component: Registration,
+  },
+  {
+    path: '/Manual',
+    component: Manual,
   },
   {
     path: '/Address',

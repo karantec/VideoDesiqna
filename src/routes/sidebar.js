@@ -34,6 +34,21 @@ const routes = [
     icon: <InboxArrowDownIcon className={iconClasses}/>, // icon component
     name: 'Campaign', // name that appear in Sidebar
   },
+  {
+    path: '/app/RequestDemo', // url
+    icon: <InboxArrowDownIcon className={iconClasses}/>, // icon component
+    name: 'RequestDemo', // name that appear in Sidebar
+  },
+  {
+    path: '/app/BookDemo', // url
+    icon: <InboxArrowDownIcon className={iconClasses}/>, // icon component
+    name: 'BookDemo', // name that appear in Sidebar
+  },
+  {
+    path: '/app/Feedback', // url
+    icon: <InboxArrowDownIcon className={iconClasses}/>, // icon component
+    name: 'Feedback', // name that appear in Sidebar
+  },
   // {
   //   path: '/app/transactions', // url
   //   icon: <CurrencyDollarIcon className={iconClasses}/>, // icon component
@@ -70,6 +85,11 @@ const routes = [
         icon: <UserIcon className={submenuIconClasses}/>, // icon component
         name: 'Register', // name that appear in Sidebar
       },
+      {
+      path: '/app/Manual', //url
+      icon: <UserIcon className={submenuIconClasses}/>, // icon component
+      name: 'Manual', // name that appear in Sidebar
+    },
       {
         path: '/forgot-password',
         icon: <KeyIcon className={submenuIconClasses}/>,

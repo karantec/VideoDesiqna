@@ -24,7 +24,7 @@ function Login() {
         if (password.trim() === "") return setErrorMessage("Password is required!")
 
         // Custom login validation
-        if (username !== "renderverse" || password !== "renderverse@123") {
+        if (username !== "VisitingCard" || password !== "VisitingCard@123") {
             return setErrorMessage("Invalid username or password!")
         }
 
