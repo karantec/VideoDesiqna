@@ -86,6 +86,16 @@ const routes = [
         name: 'Register', // name that appear in Sidebar
       },
       {
+        path: '/app/ChangePassword', //url
+        icon: <UserIcon className={submenuIconClasses}/>, // icon component
+        name: 'ChangePassword', // name that appear in Sidebar
+      },
+      {
+        path: '/app/ChangePassword', //url
+        icon: <UserIcon className={submenuIconClasses}/>, // icon component
+        name: 'Edit Profile', // name that appear in Sidebar
+      },
+      {
       path: '/app/Manual', //url
       icon: <UserIcon className={submenuIconClasses}/>, // icon component
       name: 'Manual', // name that appear in Sidebar

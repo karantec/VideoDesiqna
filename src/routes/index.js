@@ -20,10 +20,11 @@ const Registration = lazy(() => import('../pages/protected/ProfileSettings'))
 const Manual=lazy(()=>import('../pages/protected/ManuSetting'))
 const Address=lazy(()=>import ('../pages/Address'))
 const GettingStarted = lazy(() => import('../pages/GettingStarted'))
+const EditProfile=lazy(()=>import('../pages/protected/EditProfile'))
 const DocFeatures = lazy(() => import('../pages/DocFeatures'))
 const DocComponents = lazy(() => import('../pages/DocComponents'))
 const Feedback = lazy(() => import('../pages/protected/Feedback'))
-
+const ChangePassword=lazy(()=>import('../pages/protected/ChangePassword'))
 const routes = [
   {
     path: '/dashboard', // the url
@@ -69,6 +70,15 @@ const routes = [
     path: '/Manual',
     component: Manual,
   },
+  {
+    path: '/EditProfile',
+    component: EditProfile,
+  },
+  {
+    path:'/ChangePassword',
+    component:ChangePassword,
+  },
+
   {
     path: '/Address',
     component: Address,
