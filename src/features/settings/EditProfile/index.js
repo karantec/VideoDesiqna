@@ -18,6 +18,8 @@ function EditProfile() {
             emailId: '',
             password: '',
             confirmPassword: '',
+            otp: '',  // New OTP field
+            aadharCardNumber: '', // New Aadhar Card Number field
         },
         businessInfo: {
             companyName: '',
@@ -25,6 +27,7 @@ function EditProfile() {
             businessType: '',
             businessMobileNo: '',
             website: '',
+            yearsInService: '', // Updated to 'yearsInService'
         },
         location: {
             country: '',
@@ -44,9 +47,7 @@ function EditProfile() {
 
     // Fetch existing profile data when component mounts
     useEffect(() => {
-        // Simulating an API call to fetch profile data
         const fetchProfileData = async () => {
-            // Replace with actual API call
             const profileData = {
                 personalInfo: {
                     mobileNumber: '9876543210',
@@ -54,8 +55,10 @@ function EditProfile() {
                     lastName: 'Doe',
                     profession: 'Software Engineer',
                     emailId: 'john.doe@example.com',
-                    password: '', // Shouldn't fetch passwords in production
+                    password: '',
                     confirmPassword: '',
+                    otp: '',
+                    aadharCardNumber: '1234-5678-9123',
                 },
                 businessInfo: {
                     companyName: 'Doe Enterprises',
@@ -63,6 +66,7 @@ function EditProfile() {
                     businessType: 'IT Services',
                     businessMobileNo: '9876543210',
                     website: 'https://doeenterprises.com',
+                    yearsInService: '10',
                 },
                 location: {
                     country: 'India',
@@ -108,7 +112,6 @@ function EditProfile() {
     };
 
     const saveProfileChanges = () => {
-        // Validation logic here
         dispatch(showNotification({ message: "Profile Updated Successfully", status: 1 }));
     };
 
@@ -142,6 +145,24 @@ function EditProfile() {
                 updateFormValue={(value) => updateFormValue('personalInfo', 'emailId', value)}
                 disabled
             />
+            <InputText
+                labelTitle="OTP"
+                type="text"
+                defaultValue={formData.personalInfo.otp}
+                updateFormValue={(value) => updateFormValue('personalInfo', 'otp', value)}
+            />
+            <button
+                className="btn btn-secondary mt-2"
+                onClick={() => alert("OTP Submitted")}
+            >
+                Submit OTP
+            </button>
+            <InputText
+                labelTitle="Aadhar Card Number"
+                type="text"
+                defaultValue={formData.personalInfo.aadharCardNumber}
+                updateFormValue={(value) => updateFormValue('personalInfo', 'aadharCardNumber', value)}
+            />
         </div>
     );
 
@@ -172,6 +193,11 @@ function EditProfile() {
                 labelTitle="Website"
                 defaultValue={formData.businessInfo.website}
                 updateFormValue={(value) => updateFormValue('businessInfo', 'website', value)}
+            />
+            <InputText
+                labelTitle="Years in Service"
+                defaultValue={formData.businessInfo.yearsInService}
+                updateFormValue={(value) => updateFormValue('businessInfo', 'yearsInService', value)}
             />
         </div>
     );
@@ -251,7 +277,6 @@ function EditProfile() {
                         className={`btn btn-primary ${loading ? "loading" : ""}`}
                         onClick={() => {
                             setLoading(true);
-                            // Simulate API call
                             setTimeout(() => {
                                 setLoading(false);
                                 saveProfileChanges();

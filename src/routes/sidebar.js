@@ -91,7 +91,7 @@ const routes = [
         name: 'ChangePassword', // name that appear in Sidebar
       },
       {
-        path: '/app/ChangePassword', //url
+        path: '/app/EditProfile', //url
         icon: <UserIcon className={submenuIconClasses}/>, // icon component
         name: 'Edit Profile', // name that appear in Sidebar
       },

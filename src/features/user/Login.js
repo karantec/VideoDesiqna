@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 import LandingIntro from './LandingIntro'
 import ErrorText from '../../components/Typography/ErrorText'
 import InputText from '../../components/Input/InputText'
+import { FaGoogle } from 'react-icons/fa'
+import { FaFacebook } from 'react-icons/fa'
+import { FaApple } from 'react-icons/fa'
 
 function Login() {
     const INITIAL_LOGIN_OBJ = {
@@ -80,6 +83,26 @@ function Login() {
                             <ErrorText styleClass="mt-8">{errorMessage}</ErrorText>
                             <button type="submit" className={"btn mt-2 w-full btn-primary" + (loading ? " loading" : "")}>Login</button>
                         </form>
+
+                        <div className="mt-8 flex flex-col items-center space-y-4">
+                            {/* Google Login - Just Icon and Text */}
+                            <button className="btn w-full btn-outline flex items-center justify-center space-x-2">
+                                <FaGoogle className="text-xl" />
+                                <span>Login with Google</span>
+                            </button>
+
+                            {/* Facebook Login - Just Icon and Text */}
+                            <button className="btn w-full btn-outline flex items-center justify-center space-x-2">
+                                <FaFacebook className="text-xl" />
+                                <span>Login with Facebook</span>
+                            </button>
+
+                            {/* Apple Login - Just Icon and Text */}
+                            <button className="btn w-full btn-outline flex items-center justify-center space-x-2">
+                                <FaApple className="text-xl" />
+                                <span>Login with Apple</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

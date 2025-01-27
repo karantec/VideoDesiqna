@@ -25,6 +25,7 @@ function ProfileSettings() {
             businessType: '',
             businessMobileNo: '',
             website: '',
+            gstin: '29ABCDE1234F1Z5',
         },
         location: {
             country: '',
@@ -111,6 +112,7 @@ function ProfileSettings() {
                 defaultValue={formData.personalInfo.confirmPassword}
                 updateFormValue={(value) => updateFormValue('personalInfo', 'confirmPassword', value)}
             />
+            
         </div>
     );
 
@@ -184,10 +186,9 @@ function ProfileSettings() {
 
             <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700">GSTIN</label>
-                <ToogleInput 
-                    labelTitle="" 
-                    defaultChecked={false} 
-                    onChange={() => {}} 
+                <InputText
+                    defaultValue={formData.documents.gstin}
+                    updateFormValue={(value) => updateFormValue('documents', 'gstin', value)}
                 />
             </div>
 
