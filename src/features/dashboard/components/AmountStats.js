@@ -1,18 +1,19 @@
+import { Link } from "react-router-dom"
 
 function AmountStats({}){
     return(
         <div className="stats bg-base-100 shadow">
             <div className="stat">
-                <div className="stat-title">Amount to be Collected</div>
-                <div className="stat-value">$25,600</div>
+                <div className="stat-title">Total Selection in TOP MNCs</div>
+                <div className="stat-value">150+</div>
                 <div className="stat-actions">
-                    <button className="btn btn-xs">View Users</button> 
+                    <Link to='/https://training.desiqna.in/achiver'><button className="btn btn-xs">View Users</button> </Link>
                 </div>
             </div>
             
             <div className="stat">
-                <div className="stat-title">Cash in hand</div>
-                <div className="stat-value">$5,600</div>
+                <div className="stat-title">Recent Month Selection</div>
+                <div className="stat-value">12+</div>
                 <div className="stat-actions">
                     <button className="btn btn-xs">View Members</button> 
                 </div>

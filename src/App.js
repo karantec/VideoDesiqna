@@ -7,6 +7,7 @@ import initializeApp from './app/init';
 import ForgotPasswordOTP from './features/user/ForgotOtp';
 import ResetPassword from './features/user/ResetPassword';
 import Address from './features/user/Address';
+import Dashboard from './features/dashboard';
 
 // Importing pages
 const Layout = lazy(() => import('./containers/Layout'))
@@ -35,6 +36,7 @@ function App() {
     <>
       <Router>
         <Routes>
+        
           <Route path="/" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/Verify-otp" element={<ForgotPasswordOTP />} />
@@ -43,7 +45,7 @@ function App() {
           <Route path="/address" element={<Address/>}/>
           {/* Place new routes over this */}
           <Route path="/app/*" element={<Layout />} />
-
+          <Route path="/dashboard" element={<Dashboard />} />
           {/* <Route path="*" element={<Navigate to={token ? "/app/welcome" : "/login"} replace />}/> */}
 
         </Routes>

@@ -1,113 +1,139 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import LandingIntro from './LandingIntro'
-import ErrorText from '../../components/Typography/ErrorText'
-import InputText from '../../components/Input/InputText'
-import { FaGoogle } from 'react-icons/fa'
-import { FaFacebook } from 'react-icons/fa'
-import { FaApple } from 'react-icons/fa'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-function Login() {
-    const INITIAL_LOGIN_OBJ = {
-        username: "",
-        password: ""
+const Login = ({ setIsAuthenticated }) => {
+  const INITIAL_LOGIN_OBJ = {
+    username: "2025_Batch_Trainings",
+    password: "2025_Batch_Trainings",
+    month: "Januarys",
+  };
+
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [loginObj, setLoginObj] = useState(INITIAL_LOGIN_OBJ);
+  const navigate = useNavigate();
+
+  const submitForm = async (e) => {
+    e.preventDefault();
+    setErrorMessage("");
+    console.log("Form submitted");
+
+    const { username, password, month } = loginObj;
+
+    if (username.trim() === "") return setErrorMessage("Username is required!");
+    if (password.trim() === "") return setErrorMessage("Password is required!");
+
+    setLoading(true);
+
+    try {
+      console.log("Making API call");
+      const response = await axios.post("http://localhost:8000/course/login", {
+        username,
+        password,
+      });
+
+      console.log("API Response:", response);
+      const { data } = response;
+
+      if (data.success) {
+        console.log("Login successful, attempting navigation");
+
+        // Set authenticated state (no need to store token)
+        setIsAuthenticated(true);
+
+        // Navigate to dashboard
+        navigate("app/dashboard", { replace: true });
+        console.log("Navigation called");
+      } else {
+        setErrorMessage(data.message || "Login failed! Please try again.");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      setErrorMessage(
+        error.response?.data?.message || "An error occurred during login!"
+      );
+    } finally {
+      setLoading(false);
     }
+  };
 
-    const [loading, setLoading] = useState(false)
-    const [errorMessage, setErrorMessage] = useState("")
-    const [loginObj, setLoginObj] = useState(INITIAL_LOGIN_OBJ)
+  const updateFormValue = ({ updateType, value }) => {
+    setErrorMessage("");
+    setLoginObj({ ...loginObj, [updateType]: value });
+  };
 
-    const submitForm = (e) => {
-        e.preventDefault()
-        setErrorMessage("")
+  return (
+    <div className="min-h-screen bg-base-200 flex items-center">
+      <div className="card mx-auto w-full max-w-5xl shadow-xl">
+        <div className="grid md:grid-cols-2 grid-cols-1 bg-base-100 rounded-xl">
+          <div className="py-24 px-10">
+            <h2 className="text-2xl font-semibold mb-2 text-center">Login</h2>
+            <form onSubmit={submitForm}>
+              <div className="mb-4">
+                <input
+                  type="text"
+                  className="input input-bordered w-full mt-4"
+                  placeholder="Username"
+                  value={loginObj.username}
+                  onChange={(e) =>
+                    updateFormValue({ updateType: "username", value: e.target.value })
+                  }
+                />
+                <input
+                  type="password"
+                  className="input input-bordered w-full mt-4"
+                  placeholder="Password"
+                  value={loginObj.password}
+                  onChange={(e) =>
+                    updateFormValue({ updateType: "password", value: e.target.value })
+                  }
+                />
+                <select
+                  className="select select-bordered w-full mt-4"
+                  value={loginObj.month}
+                  onChange={(e) =>
+                    updateFormValue({ updateType: "month", value: e.target.value })
+                  }
+                >
+                  {[
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December",
+                  ].map((month) => (
+                    <option key={month} value={month}>
+                      {month}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
-        const { username, password } = loginObj
-
-        if (username.trim() === "") return setErrorMessage("Username is required!")
-        if (password.trim() === "") return setErrorMessage("Password is required!")
-
-        // Custom login validation
-        if (username !== "VisitingCard" || password !== "VisitingCard@123") {
-            return setErrorMessage("Invalid username or password!")
-        }
-
-        setLoading(true)
-        setTimeout(() => {
-            setLoading(false)
-            // Save token or any flag in localStorage (if needed)
-            localStorage.setItem("token", "RenderverseToken")
-            window.location.href = '/app/welcome'
-        }, 1000) // Simulate API call
-    }
-
-    const updateFormValue = ({ updateType, value }) => {
-        setErrorMessage("")
-        setLoginObj({ ...loginObj, [updateType]: value })
-    }
-
-    return (
-        <div className="min-h-screen bg-base-200 flex items-center">
-            <div className="card mx-auto w-full max-w-5xl shadow-xl">
-                <div className="grid md:grid-cols-2 grid-cols-1 bg-base-100 rounded-xl">
-                    <div>
-                        <LandingIntro />
-                    </div>
-                    <div className='py-24 px-10'>
-                        <h2 className='text-2xl font-semibold mb-2 text-center'>Login</h2>
-                        <form onSubmit={submitForm}>
-                            <div className="mb-4">
-                                <InputText
-                                    defaultValue={loginObj.username}
-                                    type="text"
-                                    updateType="username"
-                                    containerStyle="mt-4"
-                                    labelTitle="Username"
-                                    updateFormValue={updateFormValue}
-                                />
-                                <InputText
-                                    defaultValue={loginObj.password}
-                                    type="password"
-                                    updateType="password"
-                                    containerStyle="mt-4"
-                                    labelTitle="Password"
-                                    updateFormValue={updateFormValue}
-                                />
-                            </div>
-
-                            <div className='text-right text-primary'>
-                                <Link to="/forgot-password">
-                                    <span className="text-sm inline-block hover:text-primary hover:underline hover:cursor-pointer transition duration-200">Forgot Password?</span>
-                                </Link>
-                            </div>
-
-                            <ErrorText styleClass="mt-8">{errorMessage}</ErrorText>
-                            <button type="submit" className={"btn mt-2 w-full btn-primary" + (loading ? " loading" : "")}>Login</button>
-                        </form>
-
-                        <div className="mt-8 flex flex-col items-center space-y-4">
-                            {/* Google Login - Just Icon and Text */}
-                            <button className="btn w-full btn-outline flex items-center justify-center space-x-2">
-                                <FaGoogle className="text-xl" />
-                                <span>Login with Google</span>
-                            </button>
-
-                            {/* Facebook Login - Just Icon and Text */}
-                            <button className="btn w-full btn-outline flex items-center justify-center space-x-2">
-                                <FaFacebook className="text-xl" />
-                                <span>Login with Facebook</span>
-                            </button>
-
-                            {/* Apple Login - Just Icon and Text */}
-                            <button className="btn w-full btn-outline flex items-center justify-center space-x-2">
-                                <FaApple className="text-xl" />
-                                <span>Login with Apple</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+              {errorMessage && (
+                <div className="text-red-500 text-sm mt-2">{errorMessage}</div>
+              )}
+              
+              <button
+                type="submit"
+                className={`btn mt-2 w-full btn-primary ${loading ? "loading" : ""}`}
+                disabled={loading}
+              >
+                Login
+              </button>
+            </form>
+          </div>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default Login
+export default Login;
