@@ -22,6 +22,8 @@ import { MdCampaign } from "react-icons/md";
 import { VscGitPullRequestNewChanges } from "react-icons/vsc";
 import { FaBookBookmark } from "react-icons/fa6";
 import { VscFeedback } from "react-icons/vsc";
+import { RiChatPrivateFill } from "react-icons/ri";
+import { TbLetterMSmall } from "react-icons/tb";
 const iconClasses = `h-6 w-6`
 const submenuIconClasses = `h-5 w-5`
 
@@ -127,28 +129,24 @@ const routes = [
      
     ]
   },
-  // {
-  //   path: '', //no url needed as this has submenu
-  //   icon: <Cog6ToothIcon className={`${iconClasses} inline` }/>, // icon component
-  //   name: 'Settings', // name that appear in Sidebar
-  //   submenu : [
-  //     {
-  //       path: '/app/settings-profile', //url
-  //       icon: <UserIcon className={submenuIconClasses}/>, // icon component
-  //       name: 'Profile', // name that appear in Sidebar
-  //     },
-  //     {
-  //       path: '/app/settings-billing',
-  //       icon: <WalletIcon className={submenuIconClasses}/>,
-  //       name: 'Billing',
-  //     },
-  //     {
-  //       path: '/app/settings-team', // url
-  //       icon: <UsersIcon className={submenuIconClasses}/>, // icon component
-  //       name: 'Team Members', // name that appear in Sidebar
-  //     },
-  //   ]
-  // },
+  {
+    path: '', //no url needed as this has submenu
+    icon: <Cog6ToothIcon className={`${iconClasses} inline` }/>, // icon component
+    name: 'Settings', // name that appear in Sidebar
+    submenu : [
+      {
+        path: '/app/PrivacyPolicy', //url
+        icon: <RiChatPrivateFill className={submenuIconClasses}/>, // icon component
+        name: 'Privacy Policy', // name that appear in Sidebar
+      },
+      {
+        path: '/app/termofservice',
+        icon: <TbLetterMSmall className={submenuIconClasses}/>,
+        name: 'Terms and Conditions',
+      },
+     
+    ]
+  },
   // {
   //   path: '', //no url needed as this has submenu
   //   icon: <DocumentTextIcon className={`${iconClasses} inline` }/>, // icon component

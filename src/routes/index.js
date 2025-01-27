@@ -20,6 +20,8 @@ const Registration = lazy(() => import('../pages/protected/ProfileSettings'))
 const Manual=lazy(()=>import('../pages/protected/ManuSetting'))
 const Address=lazy(()=>import ('../pages/Address'))
 const GettingStarted = lazy(() => import('../pages/GettingStarted'))
+const PrivacyPolicy=lazy(()=>import('../pages/PrivacyPolicy'))
+const TermofServie=lazy(()=>import('../pages/TermofService'))
 const EditProfile=lazy(()=>import('../pages/protected/EditProfile'))
 const DocFeatures = lazy(() => import('../pages/DocFeatures'))
 const DocComponents = lazy(() => import('../pages/DocComponents'))
@@ -90,6 +92,14 @@ const routes = [
   {
     path: '/getting-started',
     component: GettingStarted,
+  },
+  {
+    path: '/PrivacyPolicy',
+    component: PrivacyPolicy,
+  },
+  {
+    path: '/termofservice',
+    component:TermofServie ,
   },
   {
     path: '/features',
