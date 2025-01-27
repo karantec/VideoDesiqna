@@ -18,7 +18,10 @@ import InboxArrowDownIcon from '@heroicons/react/24/outline/InboxArrowDownIcon'
 import UsersIcon from '@heroicons/react/24/outline/UsersIcon'
 import KeyIcon from '@heroicons/react/24/outline/KeyIcon'
 import DocumentDuplicateIcon from '@heroicons/react/24/outline/DocumentDuplicateIcon'
-
+import { MdCampaign } from "react-icons/md";
+import { VscGitPullRequestNewChanges } from "react-icons/vsc";
+import { FaBookBookmark } from "react-icons/fa6";
+import { VscFeedback } from "react-icons/vsc";
 const iconClasses = `h-6 w-6`
 const submenuIconClasses = `h-5 w-5`
 
@@ -31,22 +34,22 @@ const routes = [
   },
   {
     path: '/app/leads', // url
-    icon: <InboxArrowDownIcon className={iconClasses}/>, // icon component
+    icon: <MdCampaign className={iconClasses}/>, // icon component
     name: 'Campaign', // name that appear in Sidebar
   },
   {
     path: '/app/RequestDemo', // url
-    icon: <InboxArrowDownIcon className={iconClasses}/>, // icon component
+    icon: <VscGitPullRequestNewChanges className={iconClasses}/>, // icon component
     name: 'RequestDemo', // name that appear in Sidebar
   },
   {
     path: '/app/BookDemo', // url
-    icon: <InboxArrowDownIcon className={iconClasses}/>, // icon component
+    icon: <FaBookBookmark className={iconClasses}/>, // icon component
     name: 'BookDemo', // name that appear in Sidebar
   },
   {
     path: '/app/Feedback', // url
-    icon: <InboxArrowDownIcon className={iconClasses}/>, // icon component
+    icon: <VscFeedback className={iconClasses}/>, // icon component
     name: 'Feedback', // name that appear in Sidebar
   },
   // {
