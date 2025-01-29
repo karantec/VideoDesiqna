@@ -3,54 +3,26 @@ import { useDispatch, useSelector } from "react-redux";
 import TitleCard from "../../components/Cards/TitleCard";
 import { openModal } from "../common/modalSlice";
 import { getLeadsContent } from "./leadSlice";
+import axios from "axios";
 
 
-
-const VideoGrid = () => {
-    const videos = [
-        {
-            title: "Watch this video to understand your coding plan",
-            thumbnail: "",
-            link: "https://drive.google.com/file/d/18XMT-L9L3TNOJoMtJmlbVbPPH_W7DjgF/view",
-        },
-        {
-            title: "Watch this - Coding interview Video",
-            thumbnail: "data:image/png;base64,",
-            link: "https://drive.google.com/file/d/1UcZasHMtK4fhErvVamKA6Cb3fuDuBMJV/view",
-        },
-        {
-            title: "Watch this Non-Coding session",
-            thumbnail: "",
-            link: "https://drive.google.com/file/d/1UoD3JAYOfRCKIGQZqHrR0xv1B7gDTbHo/view?usp=sharing",
-        },
-        {
-            title: "Watch Coding Session video",
-            thumbnail: "",
-            link: "https://drive.google.com/file/d/135T0fcU69kZX9q5TBNFWAd8FF8OU8nEL/view?usp=sharing",
-        },
-        {
-            title: "Compulsory to watch before the Dev Ma’am session!",
-            thumbnail: "",
-            link: "https://drive.google.com/file/d/1XTbQ4zaDrP3vmQsB7GsQW0dobci2MwF5/view?usp=sharing",
-        },
-    ];
-
+const VideoGrid = ({data}) => {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {videos.map((video, index) => (
+            {data.map((video, index) => (
                 <div
                     key={index}
                     className="card bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-200"
                 >
                     <img
-                        src={video.thumbnail}
-                        alt={video.title}
+                        src={video.courseImage}
+                        alt={video.courseName}
                         className="w-full h-48 object-cover"
                     />
                     <div className="p-4">
-                        <h3 className="text-lg font-semibold mb-2">{video.title}</h3>
+                        <h3 className="text-lg font-semibold mb-2">{video.courseName}</h3>
                         <a
-                            href={video.link}
+                            href={video.courseLink}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="btn btn-sm btn-primary"
@@ -82,7 +54,36 @@ function HomeworkSection() {
     );
 }
 function BookDemo() {
+    const [videos, setVideos] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const dispatch = useDispatch();
+  
+    useEffect(() => {
+        const userId = "user12345"; // Set your user ID
+        const month = "JANUARY"; // Set the month
+      
+        dispatch(getLeadsContent());
+      
+        const fetchVideos = async () => {
+          try {
+            const response = await axios.get(
+              `https://backenddesiqna.onrender.com/course/courses?userId=${userId}&month=${month}`
+            );
+      
+            console.log(response.data.courses);
+            setVideos(response.data.courses); // Assuming API returns an array of videos
+          } catch (error) {
+            setError("Failed to load videos.");
+            console.error("API error:", error);
+          } finally {
+            setLoading(false);
+          }
+        };
+      
+        fetchVideos();
+      }, [dispatch]);
+      
 
     useEffect(() => {
         dispatch(getLeadsContent());
@@ -92,7 +93,7 @@ function BookDemo() {
         <div className="p-6 space-y-6">
             <HomeworkSection />
             <TitleCard title="Video Resources">
-                <VideoGrid />
+                <VideoGrid data={videos}/>
             </TitleCard>
         </div>
     );

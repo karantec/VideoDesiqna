@@ -4,8 +4,8 @@ import axios from "axios";
 
 const Login = ({ setIsAuthenticated }) => {
   const INITIAL_LOGIN_OBJ = {
-    username: "2025_Batch_Trainings",
-    password: "2025_Batch_Trainings",
+    username: "2025_Batch_Training",
+    password: "2025_Batch_Training",
     month: "January",
   };
 
@@ -38,7 +38,7 @@ const Login = ({ setIsAuthenticated }) => {
 
       console.log("API Response:", response);
       const { data } = response;
-
+      console.log(data)
       if (data.success) {
         console.log("Login successful, attempting navigation");
 
