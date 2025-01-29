@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -6,7 +6,7 @@ const Login = ({ setIsAuthenticated }) => {
   const INITIAL_LOGIN_OBJ = {
     username: "2025_Batch_Training",
     password: "2025_Batch_Training",
-    month: "January",
+    month: "JANUARY", // Default in uppercase
   };
 
   const [loading, setLoading] = useState(false);
@@ -14,45 +14,44 @@ const Login = ({ setIsAuthenticated }) => {
   const [loginObj, setLoginObj] = useState(INITIAL_LOGIN_OBJ);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    // Retrieve stored month from localStorage if available
+    const storedMonth = localStorage.getItem("month");
+    if (storedMonth) {
+      setLoginObj((prev) => ({ ...prev, month: storedMonth }));
+    }
+  }, []);
+
   const submitForm = async (e) => {
     e.preventDefault();
     setErrorMessage("");
-    console.log("Form submitted");
 
     const { username, password, month } = loginObj;
+    const upperCaseMonth = month.toUpperCase(); // Ensure month is uppercase
 
-    if (username.trim() === "") return setErrorMessage("Username is required!");
-    if (password.trim() === "") return setErrorMessage("Password is required!");
+    if (!username.trim()) return setErrorMessage("Username is required!");
+    if (!password.trim()) return setErrorMessage("Password is required!");
 
     setLoading(true);
 
-
     try {
-      console.log("Making API call");
-      console.log(month)
-      const response = await axios.post("https://backenddesiqna.onrender.com/course/login", {
-        username,
-        password,
-        month
-      });
+      const response = await axios.post(
+        "https://backenddesiqna.onrender.com/course/login",
+        { username, password, month: upperCaseMonth } // Send uppercase month
+      );
 
-      console.log("API Response:", response);
-      const { data } = response;
-      console.log(response)
-      if (response.status===200) {
-        console.log("Login successful, attempting navigation");
+      if (response.status === 200) {
+        const { userId } = response.data;
 
-        // Set authenticated state (no need to store token)
-        // setIsAuthenticated(true);                                                                                // what does this doo fix it
+        // Store userId and month in localStorage
+        localStorage.setItem("userId", userId);
+        localStorage.setItem("month", upperCaseMonth);
 
-        // Navigate to dashboard
-        navigate("app/dashboard", { replace: true });
-        console.log("Navigation called");
+        navigate("/app/dashboard", { replace: true });
       } else {
-        setErrorMessage(data.message || "Login failed! Please try again.");
+        setErrorMessage(response.data.message || "Login failed! Please try again.");
       }
     } catch (error) {
-      console.error("Login error:", error);
       setErrorMessage(
         error.response?.data?.message || "An error occurred during login!"
       );
@@ -96,22 +95,22 @@ const Login = ({ setIsAuthenticated }) => {
                   className="select select-bordered w-full mt-4"
                   value={loginObj.month}
                   onChange={(e) =>
-                    updateFormValue({ updateType: "month", value: e.target.value })
+                    updateFormValue({ updateType: "month", value: e.target.value.toUpperCase() })
                   }
                 >
                   {[
-                    "January",
-                    "February",
-                    "March",
-                    "April",
-                    "May",
-                    "June",
-                    "July",
-                    "August",
-                    "September",
-                    "October",
-                    "November",
-                    "December",
+                    "JANUARY",
+                    "FEBRUARY",
+                    "MARCH",
+                    "APRIL",
+                    "MAY",
+                    "JUNE",
+                    "JULY",
+                    "AUGUST",
+                    "SEPTEMBER",
+                    "OCTOBER",
+                    "NOVEMBER",
+                    "DECEMBER",
                   ].map((month) => (
                     <option key={month} value={month}>
                       {month}
@@ -123,7 +122,7 @@ const Login = ({ setIsAuthenticated }) => {
               {errorMessage && (
                 <div className="text-red-500 text-sm mt-2">{errorMessage}</div>
               )}
-              
+
               <button
                 type="submit"
                 className={`btn mt-2 w-full btn-primary ${loading ? "loading" : ""}`}
