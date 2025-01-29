@@ -6,7 +6,7 @@ const Login = ({ setIsAuthenticated }) => {
   const INITIAL_LOGIN_OBJ = {
     username: "2025_Batch_Training",
     password: "2025_Batch_Training",
-    month: "JANUARY", // Default in uppercase
+    month: "JANUARY",
   };
 
   const [loading, setLoading] = useState(false);
@@ -15,7 +15,6 @@ const Login = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Retrieve stored month from localStorage if available
     const storedMonth = localStorage.getItem("month");
     if (storedMonth) {
       setLoginObj((prev) => ({ ...prev, month: storedMonth }));
@@ -27,7 +26,7 @@ const Login = ({ setIsAuthenticated }) => {
     setErrorMessage("");
 
     const { username, password, month } = loginObj;
-    const upperCaseMonth = month.toUpperCase(); // Ensure month is uppercase
+    const upperCaseMonth = month.toUpperCase();
 
     if (!username.trim()) return setErrorMessage("Username is required!");
     if (!password.trim()) return setErrorMessage("Password is required!");
@@ -37,16 +36,13 @@ const Login = ({ setIsAuthenticated }) => {
     try {
       const response = await axios.post(
         "https://backenddesiqna.onrender.com/course/login",
-        { username, password, month: upperCaseMonth } // Send uppercase month
+        { username, password, month: upperCaseMonth }
       );
 
       if (response.status === 200) {
         const { userId } = response.data;
-
-        // Store userId and month in localStorage
         localStorage.setItem("userId", userId);
         localStorage.setItem("month", upperCaseMonth);
-
         navigate("/app/dashboard", { replace: true });
       } else {
         setErrorMessage(response.data.message || "Login failed! Please try again.");
@@ -66,9 +62,10 @@ const Login = ({ setIsAuthenticated }) => {
   };
 
   return (
-    <div className="min-h-screen bg-base-200 flex items-center">
+    <div className="min-h-screen bg-base-200 flex items-center justify-center px-4">
       <div className="card mx-auto w-full max-w-5xl shadow-xl">
         <div className="grid md:grid-cols-2 grid-cols-1 bg-base-100 rounded-xl">
+          {/* Left Side: Login Form */}
           <div className="py-24 px-10">
             <h2 className="text-2xl font-semibold mb-2 text-center">Login</h2>
             <form onSubmit={submitForm}>
@@ -131,6 +128,15 @@ const Login = ({ setIsAuthenticated }) => {
                 Login
               </button>
             </form>
+          </div>
+
+          {/* Right Side: Image */}
+          <div className="hidden md:block">
+            <img
+              src="desiqna.png"
+              alt="Login Illustration"
+              className="w-full h-full  rounded-r-xl"
+            />
           </div>
         </div>
       </div>
