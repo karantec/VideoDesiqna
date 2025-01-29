@@ -30,7 +30,7 @@ const Login = ({ setIsAuthenticated }) => {
     try {
       console.log("Making API call");
       console.log(month)
-      const response = await axios.post("http://localhost:8000/course/login", {
+      const response = await axios.post("https://backenddesiqna.onrender.com/course/login", {
         username,
         password,
         month
