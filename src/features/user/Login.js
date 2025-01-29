@@ -6,7 +6,7 @@ const Login = ({ setIsAuthenticated }) => {
   const INITIAL_LOGIN_OBJ = {
     username: "2025_Batch_Trainings",
     password: "2025_Batch_Trainings",
-    month: "Januarys",
+    month: "January",
   };
 
   const [loading, setLoading] = useState(false);
@@ -26,11 +26,14 @@ const Login = ({ setIsAuthenticated }) => {
 
     setLoading(true);
 
+
     try {
       console.log("Making API call");
+      console.log(month)
       const response = await axios.post("http://localhost:8000/course/login", {
         username,
         password,
+        month
       });
 
       console.log("API Response:", response);
