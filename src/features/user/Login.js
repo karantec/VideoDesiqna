@@ -38,12 +38,12 @@ const Login = ({ setIsAuthenticated }) => {
 
       console.log("API Response:", response);
       const { data } = response;
-      console.log(data)
-      if (data.success) {
+      console.log(response)
+      if (response.status===200) {
         console.log("Login successful, attempting navigation");
 
         // Set authenticated state (no need to store token)
-        setIsAuthenticated(true);
+        // setIsAuthenticated(true);                                                                                // what does this doo fix it
 
         // Navigate to dashboard
         navigate("app/dashboard", { replace: true });
