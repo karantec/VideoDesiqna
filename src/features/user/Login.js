@@ -35,7 +35,7 @@ const Login = ({ setIsAuthenticated }) => {
 
     try {
       const response = await axios.post(
-        "https://backenddesiqna.onrender.com/course/login",
+        "https://backenddesiqna-production.up.railway.app/course/login",
         { username, password, month: upperCaseMonth }
       );
 
