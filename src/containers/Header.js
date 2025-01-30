@@ -62,7 +62,7 @@ function Header(){
             {/* Light and dark theme selection toogle **/}
             <label className="swap ">
                 <input type="checkbox"/>
-                <SunIcon data-set-theme="light" data-act-class="ACTIVECLASS" className={"fill-current w-6 h-6 "+(currentTheme === "dark" ? "swap-on" : "swap-off")}/>
+                <SunIcon data-set-theme="light" data-at-class="ACTIVECLASS" className={"fill-current w-6 h-6 "+(currentTheme === "dark" ? "swap-on" : "swap-off")}/>
                 <MoonIcon data-set-theme="dark" data-act-class="ACTIVECLASS" className={"fill-current w-6 h-6 "+(currentTheme === "light" ? "swap-on" : "swap-off")} />
             </label>
 
@@ -84,13 +84,8 @@ function Header(){
                         </div>
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li className="justify-between">
-                        <Link to={'/app/settings-profile'}>
-                            Register
-                            <span className="badge">New</span>
-                            </Link>
-                        </li>
-                        <li className=''><Link to={'/app/settings-billing'}>Bill History</Link></li>
+                        
+                     
                         <div className="divider mt-0 mb-0"></div>
                         <li><a onClick={logoutUser}>Logout</a></li>
                     </ul>
