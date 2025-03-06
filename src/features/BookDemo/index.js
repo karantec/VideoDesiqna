@@ -61,7 +61,7 @@ function BookDemo() {
     const fetchVideos = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/course/courses?userId=${userId}&month=${month}`
+          `https://backenddesiqna-1.onrender.com/course/courses?userId=${userId}&month=${month}`
         );
         setVideos(response.data.courses);
       } catch (error) {

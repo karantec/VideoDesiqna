@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Login = ({ setIsAuthenticated }) => {
+const Login = () => {
   const INITIAL_LOGIN_OBJ = {
     username: "2025_Batch_Training",
     password: "2025_Batch_Training",
@@ -13,6 +13,13 @@ const Login = ({ setIsAuthenticated }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [loginObj, setLoginObj] = useState(INITIAL_LOGIN_OBJ);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // If user is already logged in, redirect to dashboard
+    if (localStorage.getItem("userId")) {
+      navigate("/dashboard", { replace: true });
+    }
+  }, [navigate]);
 
   useEffect(() => {
     const storedMonth = localStorage.getItem("month");
@@ -35,7 +42,7 @@ const Login = ({ setIsAuthenticated }) => {
 
     try {
       const response = await axios.post(
-        "https://backenddesiqna-production.up.railway.app/course/login",
+        "https://backenddesiqna-1.onrender.com/course/login",
         { username, password, month: upperCaseMonth }
       );
 
@@ -95,24 +102,10 @@ const Login = ({ setIsAuthenticated }) => {
                     updateFormValue({ updateType: "month", value: e.target.value.toUpperCase() })
                   }
                 >
-                  {[
-                    "JANUARY",
-                    "FEBRUARY",
-                    "MARCH",
-                    "APRIL",
-                    "MAY",
-                    "JUNE",
-                    "JULY",
-                    "AUGUST",
-                    "SEPTEMBER",
-                    "OCTOBER",
-                    "NOVEMBER",
-                    "DECEMBER",
-                  ].map((month) => (
-                    <option key={month} value={month}>
-                      {month}
-                    </option>
-                  ))}
+                  {[...Array(12)].map((_, i) => {
+                    const month = new Date(0, i).toLocaleString("default", { month: "long" }).toUpperCase();
+                    return <option key={month} value={month}>{month}</option>;
+                  })}
                 </select>
               </div>
 
@@ -135,7 +128,7 @@ const Login = ({ setIsAuthenticated }) => {
             <img
               src="desiqna.png"
               alt="Login Illustration"
-              className="w-full h-full  rounded-r-xl"
+              className="w-full h-full rounded-r-xl"
             />
           </div>
         </div>
