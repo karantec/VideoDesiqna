@@ -7,7 +7,7 @@ import initializeApp from "./app/init";
 import ForgotPasswordOTP from "./features/user/ForgotOtp";
 import ResetPassword from "./features/user/ResetPassword";
 import Address from "./features/user/Address";
-import Dashboard from "./features/dashboard";
+
 import ProtectedRoute from "./PrivateRoutes";
 
 // Importing pages
@@ -27,12 +27,7 @@ function App() {
     <Router>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/Verify-otp" element={<ForgotPasswordOTP />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/address" element={<Address />} />
+          
 
           {/* Protect dashboard and app routes */}
           <Route element={<ProtectedRoute />}>
