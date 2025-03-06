@@ -4,8 +4,8 @@ import axios from "axios";
 
 const Login = ({ setIsAuthenticated }) => {
   const INITIAL_LOGIN_OBJ = {
-    username: "2025_Batch_Training",
-    password: "2025_Batch_Training",
+    username: "",
+    password: "",
     month: "JANUARY",
   };
 
