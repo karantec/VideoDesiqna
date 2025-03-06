@@ -28,6 +28,7 @@ function App() {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           
+          <Route path="/" element={<Login />} />
 
           {/* Protect dashboard and app routes */}
           <Route element={<ProtectedRoute />}>
