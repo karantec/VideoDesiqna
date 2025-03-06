@@ -24,27 +24,27 @@ const Login = ({ setIsAuthenticated }) => {
   const submitForm = async (e) => {
     e.preventDefault();
     setErrorMessage("");
-  
+
     const { username, password, month } = loginObj;
     const upperCaseMonth = month.toUpperCase();
-  
+
     if (!username.trim()) return setErrorMessage("Username is required!");
     if (!password.trim()) return setErrorMessage("Password is required!");
-  
+
     setLoading(true);
-  
+
     try {
       const response = await axios.post(
         "https://backenddesiqna-production.up.railway.app/course/login",
         { username, password, month: upperCaseMonth }
       );
-  
+
       if (response.status === 200) {
         const { userId } = response.data;
-        localStorage.setItem("userId", userId);
+        localStorage.setItem("userId", userId); // Store user ID in localStorage
         localStorage.setItem("month", upperCaseMonth);
         setIsAuthenticated(true);
-        navigate("/app/dashboard", { replace: true });
+        navigate("/app/dashboard", { replace: true }); // Redirect to dashboard
       } else {
         throw new Error(response.data.message || "Login failed! Please try again.");
       }
@@ -58,7 +58,7 @@ const Login = ({ setIsAuthenticated }) => {
       setLoading(false);
     }
   };
-  
+
   const updateFormValue = ({ updateType, value }) => {
     setErrorMessage("");
     setLoginObj({ ...loginObj, [updateType]: value });
@@ -135,11 +135,7 @@ const Login = ({ setIsAuthenticated }) => {
 
           {/* Right Side: Image */}
           <div className="hidden md:block">
-            <img
-              src="desiqna.png"
-              alt="Login Illustration"
-              className="w-full h-full  rounded-r-xl"
-            />
+            <img src="desiqna.png" alt="Login Illustration" className="w-full h-full rounded-r-xl" />
           </div>
         </div>
       </div>
