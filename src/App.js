@@ -37,7 +37,7 @@ function App() {
           {/* Protect dashboard and app routes */}
           <Route element={<ProtectedRoute />}>
             <Route path="/app/*" element={<Layout />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+            
           </Route>
 
           {/* Redirect all unknown routes to Login */}
