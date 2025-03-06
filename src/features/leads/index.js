@@ -28,28 +28,58 @@ const TopSideButtons = () => {
 const VideoGrid = () => {
     const videos = [
         {
+            title: "Motivation",
+            thumbnail: "https://img.youtube.com/vi/meeNsSmxXSg/maxresdefault.jpg",
+            link: "https://www.youtube.com/watch?v=meeNsSmxXSg",
+        },
+       
+       
+        {
             title: "Watch this video to understand your coding plan",
             thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaEcnIAkP0A53FemEkgb1PM7VQAQga_-geqw&s",
             link: "https://drive.google.com/file/d/18XMT-L9L3TNOJoMtJmlbVbPPH_W7DjgF/view",
         },
         {
             title: "Watch this - Coding interview Video",
-            thumbnail: "data:image/png;base64,",
+            thumbnail: "https://i.ytimg.com/vi/8ftRiPafAjk/maxresdefault.jpg",
             link: "https://drive.google.com/file/d/1UcZasHMtK4fhErvVamKA6Cb3fuDuBMJV/view",
         },
         {
             title: "Watch this Non-Coding session",
-            thumbnail: "",
+            thumbnail: "https://codequotient.com/blog/wp-content/uploads/2022/12/5-Common-Non-Programming-Interview-Questions-For-Fresher.jpg",
             link: "https://drive.google.com/file/d/1UoD3JAYOfRCKIGQZqHrR0xv1B7gDTbHo/view?usp=sharing",
         },
         {
             title: "Watch Coding Session video",
-            thumbnail: "",
+            thumbnail: "https://images.stockcake.com/public/8/4/c/84cd1e57-83fb-4fd0-8773-af1681b01809_large/nighttime-coding-session-stockcake.jpg",
             link: "https://drive.google.com/file/d/135T0fcU69kZX9q5TBNFWAd8FF8OU8nEL/view?usp=sharing",
         },
+
+        {
+            title: "Coding RoadMap Part 0",
+            thumbnail: "https://i.ytimg.com/vi/jgQjes7MgTM/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDNNrl2NWgOuDmZGBDFH15pBxuxSw",
+            link: "https://drive.google.com/file/d/1SoBnpeMUBvbi6-E3pgcKtt3HG4r69ec0/view",
+        },
+        
+        {
+            title: "Coding RoadMap Part 1",
+            thumbnail: "https://miro.medium.com/v2/resize:fit:1400/1*HTbkY0abBf4kRX3cK2JUrw.png",
+            link: "https://drive.google.com/file/d/16_arKkdOu7SkVeQ_6C7lux3lK-tlP3oU/view?usp=sharing",
+        },
+        {
+            title: "Coding RoadMap Part 2",
+            thumbnail: "https://www.desiqna.in/?qa=blob&qa_blobid=585268014740267471",
+            link: "https://drive.google.com/file/d/16_arKkdOu7SkVeQ_6C7lux3lK-tlP3oU/view?usp=sharing",
+        },
+        
+        
+        
+        
+        
+        
         {
             title: "Compulsory to watch before the Dev Ma’am session!",
-            thumbnail: "",
+            thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZFMVs80NojFMvnBtUywAxawgqf6dxopB0wg&s",
             link: "https://drive.google.com/file/d/1XTbQ4zaDrP3vmQsB7GsQW0dobci2MwF5/view?usp=sharing",
         },
     ];
@@ -108,6 +138,7 @@ function Leads() {
             <HomeworkSection />
             <TitleCard title="Video Resources">
                 <VideoGrid />
+                
             </TitleCard>
         </div>
     );

@@ -4,8 +4,8 @@ import axios from "axios";
 
 const Login = ({ setIsAuthenticated }) => {
   const INITIAL_LOGIN_OBJ = {
-    username: "",
-    password: "",
+    username: "2025_Batch_Training",
+    password: "2025_Batch_Training",
     month: "JANUARY",
   };
 
@@ -41,19 +41,16 @@ const Login = ({ setIsAuthenticated }) => {
 
       if (response.status === 200) {
         const { userId } = response.data;
-        localStorage.setItem("userId", userId); // Store user ID in localStorage
+        localStorage.setItem("userId", userId);
         localStorage.setItem("month", upperCaseMonth);
-        setIsAuthenticated(true);
-        navigate("/app/dashboard", { replace: true }); // Redirect to dashboard
+        navigate("/app/dashboard", { replace: true });
       } else {
-        throw new Error(response.data.message || "Login failed! Please try again.");
+        setErrorMessage(response.data.message || "Login failed! Please try again.");
       }
     } catch (error) {
-      if (error.response?.status === 401) {
-        setErrorMessage("Incorrect username or password!");
-      } else {
-        setErrorMessage(error.response?.data?.message || "An error occurred during login!");
-      }
+      setErrorMessage(
+        error.response?.data?.message || "An error occurred during login!"
+      );
     } finally {
       setLoading(false);
     }
@@ -135,7 +132,11 @@ const Login = ({ setIsAuthenticated }) => {
 
           {/* Right Side: Image */}
           <div className="hidden md:block">
-            <img src="desiqna.png" alt="Login Illustration" className="w-full h-full rounded-r-xl" />
+            <img
+              src="desiqna.png"
+              alt="Login Illustration"
+              className="w-full h-full  rounded-r-xl"
+            />
           </div>
         </div>
       </div>

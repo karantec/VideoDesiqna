@@ -48,17 +48,8 @@ const VideoGrid = () => {
 function HomeworkSection() {
     return (
         <div className="p-4 mb-6 border border-red-500 bg-red-100 rounded-lg">
-            <p className="text-red-600 font-semibold">
-                If you are a Non-IT background person, you can skip the homework and directly attend the 1-1 session with Kumar K.
-            </p>
-            <p className="mt-2 text-gray-700">
-                Homework to be done before the next session of Kumar K after the introduction:
-            </p>
-            <ul className="list-disc list-inside mt-2 text-gray-600">
-                <li>Complete the tasks mentioned in the previous session.</li>
-                <li>Review the coding material shared in the introduction session.</li>
-                <li>Prepare questions or doubts to discuss in the next session.</li>
-            </ul>
+            
+           
         </div>
     );
 }
