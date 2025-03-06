@@ -24,38 +24,41 @@ const Login = ({ setIsAuthenticated }) => {
   const submitForm = async (e) => {
     e.preventDefault();
     setErrorMessage("");
-
+  
     const { username, password, month } = loginObj;
     const upperCaseMonth = month.toUpperCase();
-
+  
     if (!username.trim()) return setErrorMessage("Username is required!");
     if (!password.trim()) return setErrorMessage("Password is required!");
-
+  
     setLoading(true);
-
+  
     try {
       const response = await axios.post(
         "https://backenddesiqna-production.up.railway.app/course/login",
         { username, password, month: upperCaseMonth }
       );
-
+  
       if (response.status === 200) {
         const { userId } = response.data;
         localStorage.setItem("userId", userId);
         localStorage.setItem("month", upperCaseMonth);
+        setIsAuthenticated(true);
         navigate("/app/dashboard", { replace: true });
       } else {
-        setErrorMessage(response.data.message || "Login failed! Please try again.");
+        throw new Error(response.data.message || "Login failed! Please try again.");
       }
     } catch (error) {
-      setErrorMessage(
-        error.response?.data?.message || "An error occurred during login!"
-      );
+      if (error.response?.status === 401) {
+        setErrorMessage("Incorrect username or password!");
+      } else {
+        setErrorMessage(error.response?.data?.message || "An error occurred during login!");
+      }
     } finally {
       setLoading(false);
     }
   };
-
+  
   const updateFormValue = ({ updateType, value }) => {
     setErrorMessage("");
     setLoginObj({ ...loginObj, [updateType]: value });
