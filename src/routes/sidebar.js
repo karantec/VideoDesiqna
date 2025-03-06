@@ -31,19 +31,23 @@ const routes = [
   {
     path: '/app/RequestDemo', // url
     icon: <IoIosRadioButtonOn className={iconClasses}/>, // icon component
-    name: 'Non-Tech Session', // name that appear in Sidebar
+    name: 'Resume + LinkedIn', // name that appear in Sidebar
   },
   {
     path: '/app/BookDemo', // url
     icon: <FaBookBookmark className={iconClasses}/>, // icon component
-    name: 'DSA CP && System Design Training', // name that appear in Sidebar
+    name: 'Main Course', // name that appear in Sidebar
   },
   {
     path: '/app/Feedback', // url
     icon: <VscFeedback className={iconClasses}/>, // icon component
-    name: 'Full Stack Development Trainining', // name that appear in Sidebar
+    name: 'Full Stack Development', // name that appear in Sidebar
   },
-  
+  {
+    path: '/app/offCampusCourse', // url
+    icon: <VscFeedback className={iconClasses}/>, // icon component
+    name: 'Off Campus Course', // name that appear in Sidebar
+  },
 
   // {
   //   path: '', //no url needed as this has submenu

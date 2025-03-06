@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { setPageTitle } from '../../features/common/headerSlice'
-import FeedbackForm from '../../features/Feedback'
+import OffCampus from '../../features/Feedback copy'
+
 
 function InternalPage(){
     const dispatch = useDispatch()
@@ -12,7 +13,7 @@ function InternalPage(){
 
 
     return(
-    <FeedbackForm/>
+        <OffCampus/>
     )
 }
 

@@ -9,8 +9,8 @@ import { getLeadsContent } from "./leadSlice";
 const VideoGrid = () => {
     const videos = [
         {
-            title: "Full Stack Dev Course",
-            thumbnail: "https://media.licdn.com/dms/image/v2/D4D12AQFhKgg0dgkGPQ/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1724497096276?e=2147483647&v=beta&t=qYJ-KBsFMn3Xi_2wZ81Jd6nZTctX0mkp-0U8MUg2zeA",
+            title: "OFF Campus Course",
+            thumbnail: "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220412075634/How-to-Crack-Off-Campus-Placements-as-a-Fresher-in-2022.png",
             link: "https://docs.google.com/document/d/1h62DrBM6Pilx-FuDyh3JmPOEBQQ3SPGYF4bbMF9xzHM/edit?tab=t.0",
         },
        
@@ -62,7 +62,7 @@ function HomeworkSection() {
         </div>
     );
 }
-function FeedbackForm() {
+function OffCampus() {
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -79,4 +79,4 @@ function FeedbackForm() {
     );
 }
 
-export default FeedbackForm;
+export default OffCampus;

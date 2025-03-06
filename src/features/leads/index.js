@@ -29,7 +29,7 @@ const VideoGrid = () => {
     const videos = [
         {
             title: "Watch this video to understand your coding plan",
-            thumbnail: "",
+            thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaEcnIAkP0A53FemEkgb1PM7VQAQga_-geqw&s",
             link: "https://drive.google.com/file/d/18XMT-L9L3TNOJoMtJmlbVbPPH_W7DjgF/view",
         },
         {
@@ -87,16 +87,12 @@ function HomeworkSection() {
     return (
         <div className="p-4 mb-6 border border-red-500 bg-red-100 rounded-lg">
             <p className="text-red-600 font-semibold">
-                If you are a Non-IT background person, you can skip the homework and directly attend the 1-1 session with Kumar K.
+                If you are a Non-IT background person, Only watch the non-coding Session and directly attend the 1-1 session with Kumar K Sir
             </p>
             <p className="mt-2 text-gray-700">
-                Homework to be done before the next session of Kumar K after the introduction:
+                Homework to be done before the next session of Kumar K  Sir after the introduction Class:
             </p>
-            <ul className="list-disc list-inside mt-2 text-gray-600">
-                <li>Complete the tasks mentioned in the previous session.</li>
-                <li>Review the coding material shared in the introduction session.</li>
-                <li>Prepare questions or doubts to discuss in the next session.</li>
-            </ul>
+            
         </div>
     );
 }

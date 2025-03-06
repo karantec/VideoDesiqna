@@ -26,11 +26,11 @@ const trainingData = {
     title: "DesiQNA Personalized Training & 1-1 Mentoring Program",
     highlights: [
         "Daily Live DSA Class (Online Test + Interview Prep + Competitive Programming) + Doubt Session from Mon-Sun",
-        "558 Students from Tier-3 colleges have Cracked 20+ LPA offers in the last 10 months.",
+        "558 Students from Tier-3/Tier-4 colleges have Cracked 20+ LPA offers in the last 15 months",
         "Separate Live training batch for Beginners vs Intermediates",
-        "850 hours structured course on DSA (OA + Interview + CP) with 24*7 doubt Support",
+        "850 hours structured course on DSA (OA + Interview-Prep + CP) with 24*7 doubt Support",
         "1-1 Personalized Mentoring + Daily Live Training By Kumar K Sir (SDE @ Amazon)",
-        "Separate Batch for college students, freshers, working professionals, and Non-IT graduates.",
+        "Separate Guidance and Personalized RoadMap for college students, freshers, working professionals, and Non-IT graduates.",
     ],
     instructor: "Kumar K Sir (SDE @ Amazon)",
     result: "High-paying offers for students through hours of personalized mentoring."

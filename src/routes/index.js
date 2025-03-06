@@ -27,6 +27,7 @@ const DocFeatures = lazy(() => import('../pages/DocFeatures'))
 const DocComponents = lazy(() => import('../pages/DocComponents'))
 const Feedback = lazy(() => import('../pages/protected/Feedback'))
 const ChangePassword=lazy(()=>import('../pages/protected/ChangePassword'))
+const OffCampus=lazy(()=>import('../pages/protected/OffCampus'))
 const routes = [
   {
     path: '/dashboard', // the url
@@ -52,6 +53,11 @@ const routes = [
     path: '/Feedback',
     component: Feedback,
   },
+  {
+    path: '/offCampusCourse',
+    component: OffCampus,
+  },
+
   {
     path: '/settings-team',
     component: Team,
