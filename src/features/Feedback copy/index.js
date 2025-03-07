@@ -11,7 +11,7 @@ const VideoGrid = () => {
         {
             title: "OFF Campus Course",
             thumbnail: "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220412075634/How-to-Crack-Off-Campus-Placements-as-a-Fresher-in-2022.png",
-            link: "https://docs.google.com/document/d/1h62DrBM6Pilx-FuDyh3JmPOEBQQ3SPGYF4bbMF9xzHM/edit?tab=t.0",
+            link: "https://docs.google.com/document/d/11kgAw1htq03q5ecnBGD62cetNIjAwOcb1Vg3b2YgnBw/edit?tab=t.0",
         },
        
     ];
