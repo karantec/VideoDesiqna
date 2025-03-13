@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import TitleCard from "../../components/Cards/TitleCard";
-import { getLeadsContent } from "./leadSlice";
 import axios from "axios";
 
 const VideoGrid = ({ data }) => {
@@ -37,7 +36,8 @@ const VideoGrid = ({ data }) => {
 function HomeworkSection() {
   return (
     <div className="p-4 mb-6 border border-red-500 bg-red-100 rounded-lg">
-      
+      <h3 className="text-lg font-semibold text-red-600">Homework Section</h3>
+      <p>Complete the assigned exercises before the next session.</p>
     </div>
   );
 }
@@ -46,11 +46,12 @@ function BookDemo() {
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const dispatch = useDispatch();
+
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     const month = (localStorage.getItem("month") || "JANUARY").toUpperCase(); // Ensure uppercase
+    const topic = "MAIN_COURSE"; // Set topic as per new API requirement
 
     if (!userId) {
       setError("User not found! Please log in.");
@@ -61,11 +62,11 @@ function BookDemo() {
     const fetchVideos = async () => {
       try {
         const response = await axios.get(
-          `https://backenddesiqna-1.onrender.com/course/courses?userId=${userId}&month=${month}`
+          `http://localhost:8000/course/courses?userId=${userId}&topic=${topic}&month=${month}`
         );
         setVideos(response.data.courses);
       } catch (error) {
-        setError("Failed to load videos.");
+        setError(error.response?.data?.message || "Failed to load videos.");
       } finally {
         setLoading(false);
       }
@@ -78,7 +79,15 @@ function BookDemo() {
     <div className="p-6 space-y-6">
       <HomeworkSection />
       <TitleCard title="Video Resources">
-        <VideoGrid data={videos} />
+        {loading ? (
+          <p className="text-center text-gray-500">Loading...</p>
+        ) : error ? (
+          <p className="text-center text-red-500">{error}</p>
+        ) : videos.length > 0 ? (
+          <VideoGrid data={videos} />
+        ) : (
+          <p className="text-center text-gray-500">No videos available.</p>
+        )}
       </TitleCard>
     </div>
   );
