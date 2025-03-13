@@ -72,10 +72,7 @@ const VideoGrid = () => {
             link: "https://drive.google.com/file/d/1TJNiXYBMSNVsBR5foj8_hMlMQcKixlif/view",
         },
         
-        
-        
-        
-        
+
         
         {
             title: "Compulsory to watch before the Dev Ma’am session!",
