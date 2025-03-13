@@ -15,9 +15,10 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // If user is already logged in, redirect to dashboard
-    if (localStorage.getItem("userId")) {
-      navigate("/dashboard", { replace: true });
+    const userId = localStorage.getItem("userId");
+    if (userId) {
+      console.log("User already logged in!");
+      // navigate("/dashboard", { replace: true });
     }
   }, [navigate]);
 
@@ -43,7 +44,8 @@ const Login = () => {
     try {
       const response = await axios.post(
         "https://backenddesiqna-1.onrender.com/course/login",
-        { username, password, month: upperCaseMonth }
+        { username, password, month: upperCaseMonth },
+        { timeout: 10000 } // Timeout after 10 seconds
       );
 
       if (response.status === 200) {
@@ -55,9 +57,11 @@ const Login = () => {
         setErrorMessage(response.data.message || "Login failed! Please try again.");
       }
     } catch (error) {
-      setErrorMessage(
-        error.response?.data?.message || "An error occurred during login!"
-      );
+      if (error.code === "ECONNABORTED") {
+        setErrorMessage("Request timed out! Please try again.");
+      } else {
+        setErrorMessage(error.response?.data?.message || "An error occurred during login!");
+      }
     } finally {
       setLoading(false);
     }
@@ -118,7 +122,7 @@ const Login = () => {
                 className={`btn mt-2 w-full btn-primary ${loading ? "loading" : ""}`}
                 disabled={loading}
               >
-                Login
+                {loading ? "Logging in..." : "Login"}
               </button>
             </form>
           </div>

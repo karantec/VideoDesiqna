@@ -52,7 +52,7 @@ function OffCampus({ userId, month }) {
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     const month = (localStorage.getItem("month") || "JANUARY").toUpperCase(); // Ensure uppercase
-    const topic = "OFF_CAAMPUS_COURSE"; // Set topic as per new API requirement
+    const topic = "OFF_CAMPUS_COURSE"; // Set topic as per new API requirement
 
     if (!userId) {
       setError("User not found! Please log in.");
@@ -63,7 +63,7 @@ function OffCampus({ userId, month }) {
     const fetchVideos = async () => {
       try {
         const response = await axios.get(
-          `https://backenddesiqna-1.onrender.com//course/courses?userId=${userId}&topic=${topic}&month=${month}`
+          `https://backenddesiqna-1.onrender.com/course/courses?userId=${userId}&topic=${topic}&month=${month}`
         );
         setVideos(response.data.courses);
       } catch (error) {

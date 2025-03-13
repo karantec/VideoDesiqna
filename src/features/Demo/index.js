@@ -69,7 +69,7 @@ function RequestDemo({ userId, month }) {
       const fetchVideos = async () => {
         try {
           const response = await axios.get(
-            `https://backenddesiqna-1.onrender.com//course/courses?userId=${userId}&topic=${topic}&month=${month}`
+            `https://backenddesiqna-1.onrender.com/course/courses?userId=${userId}&topic=${topic}&month=${month}`
           );
           setVideos(response.data.courses);
         } catch (error) {
