@@ -69,13 +69,10 @@ const VideoGrid = () => {
         {
             title: "Coding RoadMap Part 2",
             thumbnail: "https://www.desiqna.in/?qa=blob&qa_blobid=585268014740267471",
-            link: "https://drive.google.com/file/d/16_arKkdOu7SkVeQ_6C7lux3lK-tlP3oU/view?usp=sharing",
+            link: "https://drive.google.com/file/d/1TJNiXYBMSNVsBR5foj8_hMlMQcKixlif/view",
         },
         
-        
-        
-        
-        
+
         
         {
             title: "Compulsory to watch before the Dev Ma’am session!",
